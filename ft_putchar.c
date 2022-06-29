@@ -6,9 +6,12 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:04:27 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/06/21 16:53:31 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:13:31 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libftprintf.h"
 
 void	ft_putchar(const char c)
+{
 	write(1, &c, 1);
+}

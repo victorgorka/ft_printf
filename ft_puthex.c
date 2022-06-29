@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 10:14:02 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/06/27 13:11:39 by vde-prad         ###   ########.fr       */
+/*   Created: 2022/06/27 18:43:03 by vde-prad          #+#    #+#             */
+/*   Updated: 2022/06/29 09:56:56 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
+#include<stdio.h>
 
-size_t	ft_strlen(const char *s)
+int	ft_puthex(const char *str, int n)
 {
-	size_t	len;
+	unsigned int	len;
+	int				ncpy;
 
 	len = 0;
-	while (*s != 0)
+	ncpy = n;
+	if (n < 16)
 	{
+		ft_putchar(str[n]);
+	}
+	else
+	{	
+		ft_puthex(str, n / 16);
+		ft_puthex(str, n % 16);
+	}
+	while (ncpy)
+	{
+		ncpy /= 16;
 		len++;
-		s++;
 	}
 	return (len);
 }
 /*
-#include<stdio.h>
-#include<ctype.h>
-int main(int argc, char *argv[])
+int main()
 {
-	(void)argc;
-	if(strlen(&argv[1][0]) == ft_strlen(&argv[1][0]))
-	{
-		printf("%s", "OK!\n");
-	}else
-	{
-		printf("%s", "KO!\n");
-	}
-	printf("%zu", ft_strlen(&argv[1][0]));
+	unsigned int	len = ft_puthex("0123456789ABCDEF", 7000);
+	printf("\n%d", len);
 }
 */
