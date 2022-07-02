@@ -6,12 +6,13 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 12:51:17 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/06/27 13:14:39 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/02 14:10:23 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
 
-void	ft_putstr(char *s)
+unsigned int	ft_putstr(char *s)
 {
 	write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }

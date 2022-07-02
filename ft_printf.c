@@ -6,16 +6,30 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:18:56 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/06/29 09:51:05 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/02 15:21:44 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
 
+static unsigned int	ft_conver(char c, va_list arglst)
+{
+	unsigned int	len;
+
+	len = 0;
+	if (c == 'c')
+		len = ft_putchar(va_arg(arglst, int));
+	else if (c == 's')
+		len = ft_putstr(va_arg(arglst, char *));
+	return (len);
+}
+
 int	ft_printf(char const *str, ...)
 {
-	va_list	arglst;
-	int		i;
+	va_list			arglst;
+	unsigned int	i;
+	unsigned int	len;
 
+	len = 0;
 	i = -1;
 	va_start(arglst, str);
 	//recorro string
@@ -23,24 +37,23 @@ int	ft_printf(char const *str, ...)
 	{
 		//hay conversion?
 		if (str[i] == '%')
-		{
-			//que conversion?
-			if (str[++i] == 'x')
-				ft_puthex("0123456789abcdef", va_arg(arglst, int));//imprime conversion
-		}
+			len += ft_conver(str[++i], arglst);
 		else
-			ft_putchar(str[i]);//imprime caracter del string
+		{
+			ft_putchar(str[i]);//imprime caracter del string si no hay conversion
+			len++;
+		}
 	}
 	va_end(arglst);
-	return (1);
+	return (len);
 }
-/*
+
 int	main()
 {
-	int	n = 42;
-	ft_printf("Hola %x", n);
+	char	n = 'V';
+	ft_printf("Hola %c", n);
 }
-*/
+
 /*
 va_start(va_list ap, argN)			This enables access to variadic function arguments.
 va_arg(va_list ap, type)			This one accesses the next variadic function argument.
