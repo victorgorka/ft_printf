@@ -6,10 +6,10 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 12:15:47 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/02 15:14:44 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:09:02 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_digit_counter(long *n, unsigned int *i, unsigned int *sign)
 {

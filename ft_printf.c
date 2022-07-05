@@ -6,11 +6,10 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:18:56 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/05 16:24:15 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:30:56 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 static unsigned int	ft_conver(char c, va_list arglst)
 {
