@@ -6,7 +6,7 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:18:56 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/05 18:30:56 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:46:34 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -21,7 +21,12 @@ static unsigned int	ft_conver(char c, va_list arglst)
 	else if (c == 's')
 		len = ft_putstr(va_arg(arglst, char *));
 	else if (c == 'p')
-		len = ft_puthex("01234567889ABCDEF", va_arg(arglst, int));
+	{
+		len = ft_putstr("0x");
+		len += ft_puthexpoint("01234567889ABCDEF", va_arg(arglst, long));
+	}
+	else if (c == 'd' || c == 'i')
+		len = ft_putnbr(va_arg(arglst, int));
 	return (len);
 }
 
@@ -53,9 +58,8 @@ int	ft_printf(char const *str, ...)
 #include<stdio.h>
 int	main()
 {
-	int n = 0;
-	//void *p = &n;
-	int		len = ft_printf("%p", &n);
+	int a = -42;	
+	int		len = ft_printf("%d", a);
 	printf("\n%d", len);
 }
 */

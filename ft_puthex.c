@@ -6,12 +6,12 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:43:03 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/05 18:30:54 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/06 15:35:12 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-unsigned int	ft_puthexput(const char *str, unsigned int n)
+unsigned int	ft_puthexpoint(const char *str, long n)
 {
 	unsigned int	len;
 	int				ncpy;
