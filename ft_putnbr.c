@@ -6,14 +6,15 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 13:16:15 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/06 16:46:00 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/07 11:16:58 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include <stdio.h>
 
 unsigned int	ft_putnbr(int n)
 {
-	long			numb;
+	long	numb;
 	unsigned int	len;
 
 	len = 0;
@@ -21,20 +22,18 @@ unsigned int	ft_putnbr(int n)
 	if (n < 0)
 	{
 		ft_putchar('-');
+		len++;
 		numb *= -1;
 	}
 	if (numb <= 9)
+	{
 		ft_putchar((numb + '0'));
+		len++;
+	}
 	else
 	{
-		ft_putnbr(numb / 10);
+		len += ft_putnbr(numb / 10);
 		ft_putchar((numb % 10) + '0');
-	}
-	if (n < 0)
-		len++;
-	while (n)
-	{
-		n /= 10;
 		len++;
 	}
 	return (len);
@@ -42,6 +41,6 @@ unsigned int	ft_putnbr(int n)
 /*
 int main()
 {
-	ft_putnbr_fd(-2147483648, 1);
+	ft_putnbr(-2147483648);
 }
 */

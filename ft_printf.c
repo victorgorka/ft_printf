@@ -6,7 +6,7 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:18:56 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/06 16:46:34 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/07 11:36:23 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -18,6 +18,8 @@ static unsigned int	ft_conver(char c, va_list arglst)
 	len = 0;
 	if (c == 'c')
 		len = ft_putchar(va_arg(arglst, int));
+	else if (c == '%')
+		len = ft_putstr("%");
 	else if (c == 's')
 		len = ft_putstr(va_arg(arglst, char *));
 	else if (c == 'p')
@@ -39,15 +41,13 @@ int	ft_printf(char const *str, ...)
 	len = 0;
 	i = -1;
 	va_start(arglst, str);
-	//recorro string
 	while (str[++i])
 	{
-		//hay conversion?
 		if (str[i] == '%')
 			len += ft_conver(str[++i], arglst);
 		else
 		{
-			ft_putchar(str[i]);//imprime caracter del string si no hay conversion
+			ft_putchar(str[i]);
 			len++;
 		}
 	}
@@ -58,8 +58,8 @@ int	ft_printf(char const *str, ...)
 #include<stdio.h>
 int	main()
 {
-	int a = -42;	
-	int		len = ft_printf("%d", a);
+	//char c = 'V';	
+	int		len = ft_printf("%%asdasd");
 	printf("\n%d", len);
 }
 */
