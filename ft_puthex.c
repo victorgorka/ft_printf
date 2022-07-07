@@ -6,7 +6,7 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:43:03 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/07 16:13:57 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:50:22 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -36,24 +36,27 @@ unsigned int	ft_puthexpoint(const char *str, unsigned long long n)
 unsigned int	ft_puthex(const char *str, unsigned long long n)
 {
 	unsigned int	len;
-	unsigned long long	ncpy;
+//	unsigned long long	ncpy;
 
-	ncpy = n;
+//	ncpy = n;
 	len = 0;	
 	if (n < 16)
+	{
 		ft_putchar(str[n]);
+		len++;
+	}
 	else
 	{	
-		ft_puthex(str, n / 16);
-		ft_puthex(str, n % 16);
+		len += ft_puthex(str, n / 16);
+		len += ft_puthex(str, n % 16);
 	}
-	if (ncpy == 0)
-		len++;
-	while (ncpy)
-	{
-		ncpy /= 16;
-		len++;
-	}
+	//if (ncpy == 0)
+	//	len++;
+//	while (ncpy)
+//	{
+//		ncpy /= 16;
+//		len++;
+//	}
 	return (len);
 }
 /*

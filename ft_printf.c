@@ -6,10 +6,11 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:18:56 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/07 16:15:11 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:51:37 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include <limits.h>
 
 static unsigned int	ft_conver(char c, va_list arglst)
 {
@@ -25,7 +26,7 @@ static unsigned int	ft_conver(char c, va_list arglst)
 	else if (c == 'p')
 	{
 		len = ft_putstr("0x");
-		len += ft_puthexpoint("0123456789abcdef", va_arg(arglst, long));
+		len += ft_puthex("0123456789abcdef", va_arg(arglst, long));
 	}
 	else if (c == 'd' || c == 'i')
 		len = ft_putnbr(va_arg(arglst, int));
@@ -64,10 +65,10 @@ int	ft_printf(char const *str, ...)
 #include<stdio.h>
 int	main()
 {
-	int p = 9;
-	//void *p = &c;
-	int		len = ft_printf("ft_printf = %x\n", p);
-	printf("len = %d\n", len);
-	printf("printf = %x\n", p);
+//	int c = 123123;
+//	void *p = &c;
+	int		len = ft_printf("%p\n", (void *)LONG_MAX);
+	printf("%d\n", len);
+	printf("%p\n", (void *)LONG_MAX);
 }
 */
