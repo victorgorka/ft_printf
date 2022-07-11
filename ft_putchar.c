@@ -6,12 +6,12 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:04:27 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/05 17:10:00 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:08:36 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-unsigned int	ft_putchar(const char c)
+unsigned int	ft_putchar(const unsigned char c)
 {
 	write(1, &c, 1);
 	return (1);
