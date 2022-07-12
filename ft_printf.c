@@ -6,11 +6,12 @@
 /*   By: vde-prad <vde-prad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:18:56 by vde-prad          #+#    #+#             */
-/*   Updated: 2022/07/11 17:48:32 by vde-prad         ###   ########.fr       */
+/*   Updated: 2022/07/12 20:07:36 by vde-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 #include <limits.h>
+#include <stdio.h>
 
 static unsigned int	ft_conver(char c, va_list arglst)
 {
@@ -33,9 +34,9 @@ static unsigned int	ft_conver(char c, va_list arglst)
 	else if (c == 'u')
 		len = ft_putnbru(va_arg(arglst, unsigned int));
 	else if (c == 'x')
-		len = ft_puthex("0123456789abcdef", va_arg(arglst, unsigned long));
+		len = ft_puthex("0123456789abcdef", va_arg(arglst, unsigned int));
 	else if (c == 'X')
-		len = ft_puthex("0123456789ABCDEF", va_arg(arglst, unsigned long));
+		len = ft_puthex("0123456789ABCDEF", va_arg(arglst, unsigned int));
 	return (len);
 }
 
@@ -61,14 +62,15 @@ int	ft_printf(char const *str, ...)
 	va_end(arglst);
 	return (len);
 }
-
 /*
-#include<stdio.h>
-int	main()
+int main()
 {
-	int		len = ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("\n%d\n", len);
-	int		len2 = printf(" %x %x %lx %lx %lx %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("\n%d", len2);
+	unsigned int len1, len2;
+
+	len1 = ft_printf("\x01\x02\x07\v\x08\f\r\n");
+	len2 = printf("\x01\x02\x07\v\x08\f\r\n");
+	
+	printf("%d\n", len1);	
+	printf("%d\n", len2);
 }
 */
